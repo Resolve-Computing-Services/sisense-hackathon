@@ -42,7 +42,7 @@ export default function Retail() {
         <div>
           <h1 className="font-bold text-3xl mb-6">Retail</h1>
           <div className="flex flex-col gap-3 mb-6">
-            <p className="text-lg underline text-blue-500 font-bold">
+            <p className="text-lg underline text-[#F7931D] font-bold">
               Filters:
             </p>
             <TimeFilter filters={filters} setFilters={setFilters} />

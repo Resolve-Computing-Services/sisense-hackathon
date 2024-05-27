@@ -15,7 +15,7 @@ export default function RevenueByCountry({
         size: measureFactory.sum(data.Commerce.Cost, "Cost"),
         colorBy: {
           column: measureFactory.sum(data.Commerce.Revenue, "Revenue"),
-          color: "#007EA7",
+          color: "#963bc4",
         },
         details: data.Category.Category,
       }}

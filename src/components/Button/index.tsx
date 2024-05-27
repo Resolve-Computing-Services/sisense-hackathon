@@ -23,7 +23,7 @@ export default function Button({
         p-2 rounded-md
         ${
           isActive
-            ? "bg-blue-500 text-white hover:bg-blue-400"
+            ? "bg-[#F7931D] text-white hover:bg-[#f9ab53]"
             : isDarkTheme
               ? "bg-gray-50 text-black hover:bg-gray-300"
               : "bg-gray-600 text-white hover:bg-gray-400"

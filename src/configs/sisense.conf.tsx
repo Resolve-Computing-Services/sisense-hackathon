@@ -47,10 +47,10 @@ export default function SisenseProvider({ children }: SisenseProviderProps) {
     <SisenseContextProvider {...SisenseContextProviderArgs()}>
       <ThemeProvider
         {...SisenseThemeProviderArgs(isDarkTheme, [
-          "#00A7E1",
-          "#007EA7",
-          "#003459",
-          "#003535",
+          "#ab62d0",
+          "#963bc4",
+          "#782f9d",
+          "#5a2376",
         ])}
       >
         {children}

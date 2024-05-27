@@ -54,7 +54,7 @@ export default function TimeFilter({ filters, setFilters }: FilterProps) {
           value={month}
           onChange={handleInputMonth}
           className={`
-            w-[120px] text-black px-1 border border-blue-500 rounded-md shadow-md
+            w-[120px] text-black px-1 border border-[#f9ab53] rounded-md shadow-md
             disabled:bg-gray-200 disabled:border-gray-500 disabled:cursor-not-allowed
           `}
         >
@@ -77,7 +77,7 @@ export default function TimeFilter({ filters, setFilters }: FilterProps) {
           title="Select year"
           value={year}
           onChange={handleInputYear}
-          className="w-[80px] text-black px-1 border border-blue-500 rounded-md shadow-md"
+          className="w-[80px] text-black px-1 border border-[#f9ab53] rounded-md shadow-md"
         >
           <option value={""}>---</option>
           {yearOptions().map((year: number) => (

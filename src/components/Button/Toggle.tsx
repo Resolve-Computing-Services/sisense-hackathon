@@ -10,7 +10,7 @@ export default function Toggle({ state, onClick }: ToggleProps) {
     <div
       onClick={onClick}
       className={`
-        ${state ? "bg-green-400" : "bg-gray-500"} w-[32px] h-4 p-[2px] 
+        ${state ? "bg-[#f9ab53]" : "bg-gray-500"} w-[32px] h-4 p-[2px] 
         relative rounded-lg cursor-pointer
       `}
     >

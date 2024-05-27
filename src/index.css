@@ -72,7 +72,7 @@ iframe {
     }
   }
   & a {
-    color: #3b82f6;
+    color: #f7931d;
     text-decoration: underline;
     &:hover {
       text-decoration: none;
@@ -105,6 +105,10 @@ div.base-Popper-root.css-16vc3cg-MuiPopper-root {
 
 div.css-xhbwdz > div:first-child {
   min-width: 216px;
+}
+
+div.css-xhbwdz main button.csdk-border-0 {
+  background-color: #f9ab53 !important;
 }
 
 div.css-xhbwdz footer {

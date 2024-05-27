@@ -22,12 +22,12 @@ export default function Header() {
       <div
         className={`
           flex flex-row items-center justify-between p-1 px-3
-          bg-blue-600 text-white shadow-md 
+          bg-[#ab62d0] text-white shadow-md 
           ${isDarkTheme ? "shadow-gray-500" : "shadow-gray-400"} 
         `}
       >
         <div>
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row items-center gap-3">
             <IconMenu
               width={24}
               height={24}
@@ -45,7 +45,7 @@ export default function Header() {
           <div className="relative">
             <div
               title="Profile"
-              className="flex flex-row gap-2 items-center cursor-pointer p-2 rounded-md hover:bg-blue-500"
+              className="flex flex-row gap-2 items-center cursor-pointer p-2 rounded-md hover:bg-[#782f9d]"
               onClick={() => toggleProfile(!isProfileEnabled)}
             >
               <IconProfile width={20} height={20} className="animate-pulse" />

@@ -6,7 +6,7 @@ export default function ThemeToggle() {
   return (
     <div
       title="Customization"
-      className="flex flex-row gap-1 items-center cursor-pointer p-2 rounded-md hover:bg-blue-500"
+      className="flex flex-row gap-1 items-center cursor-pointer p-2 rounded-md hover:bg-[#782f9d]"
       onClick={toggleDarkTheme}
     >
       {isDarkTheme ? (

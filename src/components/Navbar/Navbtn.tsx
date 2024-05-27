@@ -43,7 +43,7 @@ export default function Navbtn({ path, text, description }: NavbtnProps) {
         className={`
           w-[220px] p-3 py-2
           ${pathname === path ? (isDarkTheme ? "bg-[#222240]" : "bg-zinc-300") : ""}
-          ${isDarkTheme ? "hover:bg-blue-400 text-white" : "hover:bg-blue-200 text-black"}
+          ${isDarkTheme ? "hover:bg-[#782f9d] text-white" : "hover:bg-[#ab62d0] text-black"}
         `}
       >
         <li className="flex flex-row items-center gap-2">
