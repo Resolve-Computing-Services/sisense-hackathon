@@ -15,7 +15,7 @@ type ThemeState = {
 export const useThemeStore = create<ThemeState>((set) => ({
   isDarkTheme: false,
   toggleDarkTheme: () => set((state) => ({ isDarkTheme: !state.isDarkTheme })),
-  colorPalette: colorPalettes.DEFAULT,
+  colorPalette: colorPalettes.BRAND,
   setColorPalette: () =>
     set((state) => ({ colorPalette: (state.colorPalette + 1) % 2 })),
 }))
