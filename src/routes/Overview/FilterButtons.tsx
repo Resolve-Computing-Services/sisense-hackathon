@@ -23,7 +23,7 @@ export default function FilterButtons({
       : new Date().getFullYear() + "-0" + (new Date().getMonth() + 1)
 
   return (
-    <div className="flex flex-row gap-1 items-center animate-fadein">
+    <div className="flex flex-row gap-3 items-center animate-fadein">
       <Button
         title={"See all time recap"}
         isActive={filters.month.length === 0}

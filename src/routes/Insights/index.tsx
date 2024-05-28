@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { toPng } from "html-to-image"
 import {
   DateRangeFilterTile,
   MemberFilterTile,
@@ -12,7 +13,7 @@ import Grid from "@mui/material/Grid"
 import BreakByButtons from "./BreakByButtons"
 import DashboardCard from "../../components/Card/Dashboard"
 import Button from "../../components/Button"
-import { IconClose } from "../../components/Icons"
+import { IconClose, IconDownload } from "../../components/Icons"
 
 import TotalRevenue from "../../components/Charts/Connector/Total/Revenue"
 import TotalUnitsSold from "../../components/Charts/Connector/Total/UnitsSold"
@@ -31,6 +32,7 @@ import RevenueByAge from "../../components/Charts/Connector/ByAge/Revenue"
 import RevenueByGender from "../../components/Charts/Connector/ByGender/Revenue"
 
 export default function Insights() {
+  const containerRef = useRef()
   const [filterDateRange, setFilterDateRange] = useState<Filter>(
     filterFactory.dateRange(DM.Commerce.Date.Years)
   )
@@ -79,11 +81,33 @@ export default function Insights() {
     </Button>
   )
 
+  const DownloadImageButton = () => (
+    <Button
+      title={"Download as PNG"}
+      isActive={false}
+      onClick={() =>
+        toPng(containerRef.current!)
+          .then((dataUrl) => {
+            const link = document.createElement("a")
+            link.href = dataUrl
+            link.download = `insights-dashboard-${new Date().toLocaleString("en-US")}.png`
+            link.click()
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+    >
+      <IconDownload width={24} height={24} />
+    </Button>
+  )
+
   return (
     <>
       <div className="flex flex-col lg:flex-row items-start lg:items-end lg:justify-between gap-3 mx-5">
         <h1 className="font-bold text-3xl mb-1">Insights</h1>
         <div className="flex flex-row items-center gap-3 animate-fadein">
+          <DownloadImageButton />
           <Button onClick={() => setShowFilters(true)}>
             {showFilters ? "Hide" : "Show"} Filters
           </Button>
@@ -165,6 +189,7 @@ export default function Insights() {
         rowSpacing={2}
         padding={2}
         className="animate-fadein"
+        ref={containerRef as any}
       >
         <DashboardCard gridColumns={3}>
           <TotalRevenue data={DM} filters={activeFilters} />

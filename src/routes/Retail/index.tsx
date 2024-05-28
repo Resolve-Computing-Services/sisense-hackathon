@@ -1,4 +1,5 @@
 import React from "react"
+import { toPng } from "html-to-image"
 import {
   buildData,
   filterData,
@@ -9,6 +10,7 @@ import { items, sales } from "../../configs/data" // data source
 
 import Grid from "@mui/material/Grid"
 import Button from "../../components/Button"
+import { IconDownload } from "../../components/Icons"
 import TimeFilter from "./TimeFilter"
 import TypeFilter from "./TypeFilter"
 import GenderFilter from "./GenderFilter"
@@ -29,12 +31,34 @@ export type FilterProps = {
 }
 
 export default function Retail() {
+  const containerRef = React.useRef()
   const [isBreakByItem, toggleBreakByItem] = React.useState<boolean>(false)
   const [filters, setFilters] = React.useState<Record>(defaultFilter())
   const originalData = buildData(items, sales)
   const data = filterData(originalData, filters)
 
   React.useEffect(() => window.scrollTo(0, 0), [])
+
+  const DownloadImageButton = () => (
+    <Button
+      title={"Download as PNG"}
+      isActive={false}
+      onClick={() =>
+        toPng(containerRef.current!)
+          .then((dataUrl) => {
+            const link = document.createElement("a")
+            link.href = dataUrl
+            link.download = `retail-dashboard-${new Date().toLocaleString("en-US")}.png`
+            link.click()
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+    >
+      <IconDownload width={24} height={24} />
+    </Button>
+  )
 
   return (
     <>
@@ -54,7 +78,8 @@ export default function Retail() {
             <GenderFilter filters={filters} setFilters={setFilters} />
           </div>
         </div>
-        <div className="mb-0 lg:mb-6 animate-fadein">
+        <div className="flex flex-row items-center gap-3 mb-0 lg:mb-6 animate-fadein">
+          <DownloadImageButton />
           <Button
             isActive={true}
             onClick={() => {
