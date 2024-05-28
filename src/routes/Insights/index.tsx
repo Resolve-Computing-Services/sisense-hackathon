@@ -72,7 +72,6 @@ export default function Insights() {
         setFilterBrand(null)
         setFilterCountry(null)
         setFilterGender(null)
-
         setShowFilters(false)
       }}
     >
@@ -84,7 +83,7 @@ export default function Insights() {
     <>
       <div className="flex flex-col lg:flex-row items-start lg:items-end lg:justify-between gap-3 mx-5">
         <h1 className="font-bold text-3xl mb-1">Insights</h1>
-        <div className="flex flex-row items-center gap-3">
+        <div className="flex flex-row items-center gap-3 animate-fadein">
           <Button onClick={() => setShowFilters(true)}>
             {showFilters ? "Hide" : "Show"} Filters
           </Button>
@@ -160,7 +159,13 @@ export default function Insights() {
         <></>
       )}
 
-      <Grid container spacing={2} rowSpacing={2} padding={2}>
+      <Grid
+        container
+        spacing={2}
+        rowSpacing={2}
+        padding={2}
+        className="animate-fadein"
+      >
         <DashboardCard gridColumns={3}>
           <TotalRevenue data={DM} filters={activeFilters} />
         </DashboardCard>

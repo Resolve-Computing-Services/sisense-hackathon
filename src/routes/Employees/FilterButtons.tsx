@@ -28,7 +28,7 @@ export default function FilterButtons({
   }, [])
 
   return (
-    <div className="flex flex-row gap-1 items-center">
+    <div className="flex flex-row gap-1 items-center animate-fadein">
       <Button
         title={"See this month's recap"}
         isActive={filters.month[0] === thisMonth}

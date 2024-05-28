@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
-import { useThemeStore } from "../../stores/useThemeStore"
+import { useThemeStore, colorPalettes } from "../../stores/useThemeStore"
 import { IconDashboard, IconDollar, IconInsights, IconUser } from "../Icons"
 
 export type NavbtnProps = {
@@ -16,7 +16,7 @@ export default function Navbtn({
   onClick,
 }: NavbtnProps) {
   const { pathname } = useLocation()
-  const { isDarkTheme } = useThemeStore()
+  const { isDarkTheme, colorPalette } = useThemeStore()
 
   const NavIcon = () => {
     switch (path) {
@@ -41,7 +41,15 @@ export default function Navbtn({
       className={`
         w-[220px] p-3 py-2
         ${pathname === path ? (isDarkTheme ? "bg-[#222240]" : "bg-zinc-300") : ""}
-        ${isDarkTheme ? "hover:bg-[#782f9d] text-white" : "hover:bg-[#ab62d0] text-black"}
+        ${
+          isDarkTheme
+            ? colorPalette === colorPalettes.BRAND
+              ? "hover:bg-[#782f9d] text-white"
+              : "hover:bg-sky-700 text-white"
+            : colorPalette === colorPalettes.BRAND
+              ? "hover:bg-[#ab62d0] text-black"
+              : "hover:bg-sky-200 text-black"
+        }
       `}
     >
       <li className="flex flex-row items-start gap-2">

@@ -18,13 +18,19 @@ import RevenueByAge from "../../components/Charts/Connector/ByAge/Revenue"
 import RevenueByGender from "../../components/Charts/Connector/ByGender/Revenue"
 
 export default function Recap() {
-  const [filterGender, _] = useState<Filter | null>(null)
+  const [filterAgeRange, setFilterAgeRange] = useState<Filter | null>(null)
+  const [filterCountry, setFilterCountry] = useState<Filter | null>(null)
+  const [filterGender, setFilterGender] = useState<Filter | null>(null)
   const [isTotalVisitsCompared, setCompareVisits] = useState<boolean>(false)
   const [breakBy, setBreakBy] = useState<number>(
     ecommerceChartBreakByOptions.CONDITION
   )
 
-  const activeFilters: Filter[] = [filterGender].filter((f) => {
+  const activeFilters: Filter[] = [
+    filterAgeRange,
+    filterCountry,
+    filterGender,
+  ].filter((f) => {
     if (f) return f // make sure no filters are undefined
   }) as Filter[]
 
@@ -38,7 +44,13 @@ export default function Recap() {
           <p>Here's your eCommerce recap</p>
         </div>
       </div>
-      <Grid container spacing={2} rowSpacing={2} padding={2}>
+      <Grid
+        container
+        spacing={2}
+        rowSpacing={2}
+        padding={2}
+        className="animate-fadein"
+      >
         <DashboardCard gridColumns={8}>
           <TotalRevenue data={DM} filters={activeFilters} />
         </DashboardCard>
@@ -66,7 +78,28 @@ export default function Recap() {
             <RevenueAndQuantity data={DM} filters={activeFilters} />
           )}
         </DashboardCard>
-        <DashboardCard gridColumns={4} title="Demographics">
+        <DashboardCard
+          gridColumns={4}
+          title={`
+            Demographics${filterAgeRange !== null || filterGender !== null ? ": " : ""}
+            ${
+              filterGender !== null && filterAgeRange !== null
+                ? `${(filterGender as any)?.valueA}, ${(filterAgeRange as any)?.valueA}`
+                : filterGender !== null
+                  ? `${(filterGender as any)?.valueA}`
+                  : filterAgeRange !== null
+                    ? `${(filterAgeRange as any)?.valueA}`
+                    : ""
+            }
+          `}
+          isClearFilterEnabled={
+            filterAgeRange !== null || filterGender !== null
+          }
+          clearFilter={() => {
+            setFilterAgeRange(null)
+            setFilterGender(null)
+          }}
+        >
           <div className="flex flex-row items-center gap-2 h-[40px] mb-2">
             <BreakByButtons
               breakBy={breakBy}
@@ -75,14 +108,31 @@ export default function Recap() {
             />
           </div>
           {breakBy === ecommerceChartBreakByOptions.GENDER ? (
-            <RevenueByGender data={DM} filters={activeFilters} />
+            <RevenueByGender
+              data={DM}
+              filters={activeFilters}
+              setFilters={setFilterGender}
+            />
           ) : (
-            <RevenueByAge data={DM} filters={activeFilters} />
+            <RevenueByAge
+              data={DM}
+              filters={activeFilters}
+              setFilters={setFilterAgeRange}
+            />
           )}
         </DashboardCard>
-        <DashboardCard gridColumns={4} title="Geography">
+        <DashboardCard
+          gridColumns={4}
+          title={`Geography${filterCountry !== null ? `: ${(filterCountry as any).valueA}` : ""}`}
+          isClearFilterEnabled={filterCountry !== null}
+          clearFilter={() => setFilterCountry(null)}
+        >
           <div className="hidden lg:block h-[40px] mb-2"></div>
-          <RevenueByCountry data={DM} filters={activeFilters} />
+          <RevenueByCountry
+            data={DM}
+            filters={activeFilters}
+            setFilters={setFilterCountry}
+          />
         </DashboardCard>
       </Grid>
     </>

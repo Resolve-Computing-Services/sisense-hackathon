@@ -62,7 +62,10 @@ export default function WorkspaceSelect() {
                   toggleDisplayWorkspace(false)
                 }}
               >
-                {space}
+                {space}{" "}
+                {workspace === space && (
+                  <span className="text-xs text-[#F7931D]">Selected</span>
+                )}
               </div>
             )
           )}

@@ -42,17 +42,17 @@ const SisenseThemeProviderArgs = (isDarkTheme: boolean, palette: string[]) => ({
 })
 
 export default function SisenseProvider({ children }: SisenseProviderProps) {
-  const { isDarkTheme } = useThemeStore()
+  const { isDarkTheme, colorPalette } = useThemeStore()
+  const palette =
+    colorPalette === 0
+      ? ["#00A7E1", "#007EA7", "#003459", "#003535"]
+      : colorPalette === 1
+        ? ["#ab62d0", "#963bc4", "#782f9d", "#5a2376"]
+        : []
+
   return (
     <SisenseContextProvider {...SisenseContextProviderArgs()}>
-      <ThemeProvider
-        {...SisenseThemeProviderArgs(isDarkTheme, [
-          "#ab62d0",
-          "#963bc4",
-          "#782f9d",
-          "#5a2376",
-        ])}
-      >
+      <ThemeProvider {...SisenseThemeProviderArgs(isDarkTheme, palette)}>
         {children}
       </ThemeProvider>
     </SisenseContextProvider>

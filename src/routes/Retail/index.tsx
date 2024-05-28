@@ -41,7 +41,7 @@ export default function Retail() {
       <div className="flex flex-col lg:flex-row items-start lg:items-end lg:justify-between gap-3 mx-5">
         <div>
           <h1 className="font-bold text-3xl mb-6">Retail</h1>
-          <div className="flex flex-col gap-3 mb-6">
+          <div className="flex flex-col gap-3 mb-6 animate-fadein">
             <p className="text-lg underline text-[#F7931D] font-bold">
               Filters:
             </p>
@@ -54,7 +54,7 @@ export default function Retail() {
             <GenderFilter filters={filters} setFilters={setFilters} />
           </div>
         </div>
-        <div className="mb-0 lg:mb-6">
+        <div className="mb-0 lg:mb-6 animate-fadein">
           <Button
             isActive={true}
             onClick={() => {
@@ -67,7 +67,13 @@ export default function Retail() {
           </Button>
         </div>
       </div>
-      <Grid container spacing={2} rowSpacing={2} padding={2}>
+      <Grid
+        container
+        spacing={2}
+        rowSpacing={2}
+        padding={2}
+        className="animate-fadein"
+      >
         <DashboardCard gridColumns={8}>
           <TotalRevenue data={data} />
         </DashboardCard>

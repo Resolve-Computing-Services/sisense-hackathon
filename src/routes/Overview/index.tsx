@@ -29,7 +29,13 @@ export default function Overview() {
         </div>
         <FilterButtons filters={filters} setFilters={setFilters} />
       </div>
-      <Grid container spacing={2} rowSpacing={2} padding={2}>
+      <Grid
+        container
+        spacing={2}
+        rowSpacing={2}
+        padding={2}
+        className="animate-fadein"
+      >
         <DashboardCard gridColumns={8}>
           <TotalRevenue data={data} />
         </DashboardCard>

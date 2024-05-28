@@ -29,7 +29,7 @@ export default function Breadcrumbs() {
   }
 
   return (
-    <div className="flex flex-row items-center gap-1 mb-2 mx-5 text-sm text-[#F7931D]">
+    <div className="h-[18px] flex flex-row items-center gap-1 mb-2 mx-5 text-sm text-[#F7931D]">
       {crumbs.map((crumb: string, i: number) => {
         const url = getBreadCrumbLink(crumbs, i)
         return (

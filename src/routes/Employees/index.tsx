@@ -22,7 +22,13 @@ export default function Employees() {
         <h1 className="font-bold text-3xl mb-1">Employees</h1>
         <FilterButtons filters={filters} setFilters={setFilters} />
       </div>
-      <Grid container spacing={2} rowSpacing={2} padding={2}>
+      <Grid
+        container
+        spacing={2}
+        rowSpacing={2}
+        padding={2}
+        className="animate-fadein"
+      >
         <DashboardCard
           gridColumns={12}
           title="Revenue By Employee"

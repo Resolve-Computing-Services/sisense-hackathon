@@ -13,7 +13,7 @@ type WorkspaceState = {
 }
 
 export const useWorkspaceStore = create<WorkspaceState>()((set) => ({
-  workspace: workspaceName.ECOMMERCE,
+  workspace: workspaceName.RETAIL,
   setWorkspace: (workspace: string) => set({ workspace }),
   isWorkspaceDisplayed: false,
   toggleDisplayWorkspace: (isWorkspaceDisplayed: boolean) =>

@@ -114,3 +114,7 @@ div.css-xhbwdz main button.csdk-border-0 {
 div.css-xhbwdz footer {
   display: none;
 }
+
+div.csdk-bg-background-priority {
+  background-color: white !important;
+}
