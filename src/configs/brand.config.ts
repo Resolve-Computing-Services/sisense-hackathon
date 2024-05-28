@@ -2,4 +2,4 @@ export const BRAND_NAME = "CompetiSense"
 
 export const USERNAME = "John Doe"
 
-export const AUTHOR = "Nhat @ resolve"
+export const AUTHOR = "resolve"

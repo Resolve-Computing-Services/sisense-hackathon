@@ -2,6 +2,7 @@ import React from "react"
 import { useLocation } from "react-router-dom"
 import { useNavStore } from "../stores/useNavStore"
 import { useThemeStore } from "../stores/useThemeStore"
+import { useWorkspaceStore } from "../stores/useWorkspaceStore"
 import ThemeToggle from "../components/Button/Theme"
 import Bubble from "../components/Bubble"
 import { IconMenu, IconCog, IconProfile, IconLogout } from "../components/Icons"
@@ -11,6 +12,7 @@ export default function Header() {
   const { pathname } = useLocation()
   const [isProfileEnabled, toggleProfile] = React.useState(false)
   const { isSidebarActive, toggleSidebar } = useNavStore()
+  const { toggleDisplayWorkspace } = useWorkspaceStore()
   const { isDarkTheme } = useThemeStore()
 
   React.useEffect(() => {
@@ -46,7 +48,10 @@ export default function Header() {
             <div
               title="Profile"
               className="flex flex-row gap-2 items-center cursor-pointer p-2 rounded-md hover:bg-[#782f9d]"
-              onClick={() => toggleProfile(!isProfileEnabled)}
+              onClick={() => {
+                toggleProfile(!isProfileEnabled)
+                toggleDisplayWorkspace(false)
+              }}
             >
               <IconProfile width={20} height={20} className="animate-pulse" />
               <span className="hidden md:block text-sm">Profile</span>

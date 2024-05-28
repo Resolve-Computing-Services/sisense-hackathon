@@ -1,14 +1,16 @@
 import { useLocation, Link } from "react-router-dom"
+import { useWorkspaceStore } from "../../stores/useWorkspaceStore"
 import { IconHouse, IconArrowRight } from "../Icons"
 import { navRouter } from "../../routes"
 import type { NavbtnProps } from "../Navbar/Navbtn"
 
 export default function Breadcrumbs() {
+  const { workspace } = useWorkspaceStore()
   const { pathname } = useLocation()
   const crumbs = pathname === "/" ? [""] : pathname.split("/")
 
   const getBreadCrumbText = (s: string) =>
-    navRouter.map((route: NavbtnProps) => {
+    navRouter(workspace).map((route: NavbtnProps) => {
       if (s === route.path) return route.text
     })
 

@@ -1,87 +1,97 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { workspaceName, useWorkspaceStore } from "../stores/useWorkspaceStore"
 import type { NavbtnProps } from "../components/Navbar/Navbtn"
 import MainLayout from "../layouts/Main"
-import Homepage from "./Homepage"
 import Recap from "./Recap"
 import Insights from "./Insights"
 import Overview from "./Overview"
 import Retail from "./Retail"
 import Employees from "./Employees"
 
-export const navRouter: NavbtnProps[] = [
-  {
-    path: "/",
-    text: "Home",
-    description: "Go to Homepage",
-  },
-  {
-    path: null,
-    text: "Using 'Sample ECommerce'",
-  },
-  {
-    path: "/recap",
-    text: "Recap",
-    description: "See ecommerce recap (using 'Sample ECommerce')",
-  },
-  {
-    path: "/insights",
-    text: "Insights",
-    description: "See ecommerce insights (using 'Sample ECommerce')",
-  },
-  {
-    path: null,
-    text: "Using custom data",
-  },
-  {
-    path: "/overview",
-    text: "Overview",
-    description: "See retail overview (using custom data)",
-  },
-  {
-    path: "/retail",
-    text: "Retail",
-    description: "See retail insights (using custom data)",
-  },
-  {
-    path: "/employees",
-    text: "Employees",
-    description: "See employee records (using custom data)",
-  },
-]
+export const navRouter = (workspace: string): NavbtnProps[] => {
+  switch (workspace) {
+    case workspaceName.ECOMMERCE:
+      return [
+        {
+          path: "/",
+          text: "Recap",
+          description: "Your eCommerce recap",
+        },
+        {
+          path: "/insights",
+          text: "Insights",
+          description: "See detailed insights",
+        },
+      ]
+    case workspaceName.RETAIL:
+      return [
+        {
+          path: "/",
+          text: "Overview",
+          description: "Your retail overview",
+        },
+        {
+          path: "/retail",
+          text: "Retail",
+          description: "In-depth retail data",
+        },
+        {
+          path: "/employees",
+          text: "Employees",
+          description: "See employee records",
+        },
+      ]
+    default:
+      return []
+  }
+}
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      {
-        path: "",
-        element: <Homepage />,
-      },
-      {
-        path: "/recap",
-        element: <Recap />,
-      },
-      {
-        path: "/insights",
-        element: <Insights />,
-      },
-      {
-        path: "/overview",
-        element: <Overview />,
-      },
-      {
-        path: "/retail",
-        element: <Retail />,
-      },
-      {
-        path: "/employees",
-        element: <Employees />,
-      },
-    ],
-  },
-])
+const router = (workspace: string) => {
+  switch (workspace) {
+    case workspaceName.ECOMMERCE:
+      return createBrowserRouter([
+        {
+          path: "/",
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <Recap />,
+            },
+            {
+              path: "/insights",
+              element: <Insights />,
+            },
+          ],
+        },
+      ])
+    case workspaceName.RETAIL:
+      return createBrowserRouter([
+        {
+          path: "/",
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <Overview />,
+            },
+            {
+              path: "/retail",
+              element: <Retail />,
+            },
+            {
+              path: "/employees",
+              element: <Employees />,
+            },
+          ],
+        },
+      ])
+    default:
+      return createBrowserRouter([])
+  }
+}
 
 export default function AppRouter() {
-  return <RouterProvider router={router} />
+  const { workspace } = useWorkspaceStore()
+  return <RouterProvider router={router(workspace)} />
 }
