@@ -48,6 +48,10 @@ Afterwards, run the following command in the terminal to execute the program:
 $ pnpm run dev # or yarn run dev, npm run dev, bun run dev, etc.
 ```
 
+## Documentation
+
+It is required to include a detailed documentation of the project, particularly to show which, where and how Sisense Compose SDK is used within the built application. You can locate and download the document [here](/docs/documentation.pdf). It contains descriptions, screenshots and hyperlinks pointing out the process of how the app was developed.
+
 ## Learn More
 
 - [Sisense Compose SDK Official Documentation](https://sisense.dev/guides/sdk/)
