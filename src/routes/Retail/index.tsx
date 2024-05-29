@@ -98,6 +98,7 @@ export default function Retail() {
         rowSpacing={2}
         padding={2}
         className="animate-fadein"
+        ref={containerRef as any}
       >
         <DashboardCard gridColumns={8}>
           <TotalRevenue data={data} />
