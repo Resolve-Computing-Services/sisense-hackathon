@@ -81,6 +81,8 @@ export const pieChartStyleOptions = (position: string) => ({
   convolution: {
     enabled: false,
   },
+  // Use classic pie chart if legend is enabled
+  // Or use pie/donut if not using legend
   subtype: position !== "null" ? "pie/classic" : "pie/donut",
   labels: {
     enabled: position === "null",
