@@ -8,7 +8,7 @@ export default function FilterButton({ children, onClick }: ButtonProps) {
     <button
       onClick={onClick}
       className={`
-        max-w-[140px] text-sm p-2 rounded-md
+        min-w-[140px] text-sm p-2 rounded-md
         flex flex-row items-center gap-1 text-left
         ${
           isDarkTheme

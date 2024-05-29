@@ -62,6 +62,10 @@ export default function Insights() {
 
   useEffect(() => window.scrollTo(0, 0), [])
 
+  useEffect(() => {
+    console.log(filterAgeRange)
+  }, [filterAgeRange])
+
   const ClearAllFiltersButton = () => (
     <Button
       isActive={true}
@@ -101,6 +105,45 @@ export default function Insights() {
       <IconDownload width={24} height={24} />
     </Button>
   )
+
+  const genderAgeRangeFilteredText = `${
+    (filterAgeRange !== null && (filterAgeRange as any)?.valueA) ||
+    (filterGender !== null && (filterGender as any)?.valueA) ||
+    ((filterAgeRange as any)?.members &&
+      (filterAgeRange as any)?.members?.length > 0) ||
+    ((filterGender as any)?.members &&
+      (filterGender as any)?.members?.length > 0)
+      ? ": "
+      : ""
+  }${
+    (filterGender as any)?.members && (filterGender as any)?.members?.length > 1
+      ? `Mult. genders`
+      : (filterGender as any)?.members &&
+          (filterGender as any)?.members?.length > 0
+        ? `${(filterGender as any).members?.[0]}`
+        : filterGender !== null && (filterGender as any)?.valueA
+          ? `${(filterGender as any).valueA}`
+          : ""
+  }${
+    ((filterAgeRange !== null && (filterAgeRange as any)?.valueA) ||
+      ((filterAgeRange as any)?.members &&
+        (filterAgeRange as any)?.members?.length > 0)) &&
+    ((filterGender !== null && (filterGender as any)?.valueA) ||
+      ((filterGender as any)?.members &&
+        (filterGender as any)?.members?.length > 0))
+      ? ", "
+      : ""
+  }${
+    (filterAgeRange as any)?.members &&
+    (filterAgeRange as any)?.members?.length > 1
+      ? `Mult. age ranges`
+      : (filterAgeRange as any)?.members &&
+          (filterAgeRange as any)?.members?.length > 0
+        ? `${(filterAgeRange as any).members?.[0]}`
+        : filterAgeRange !== null && (filterAgeRange as any)?.valueA
+          ? `${(filterAgeRange as any).valueA}`
+          : ""
+  }`
 
   return (
     <>
@@ -230,18 +273,7 @@ export default function Insights() {
         </DashboardCard>
         <DashboardCard
           gridColumns={4}
-          title={`
-            Site Popularity${filterAgeRange !== null || filterGender !== null ? ": " : ""}
-            ${
-              filterGender !== null && filterAgeRange !== null
-                ? `${(filterGender as any)?.valueA}, ${(filterAgeRange as any)?.valueA}`
-                : filterGender !== null
-                  ? `${(filterGender as any)?.valueA}`
-                  : filterAgeRange !== null
-                    ? `${(filterAgeRange as any)?.valueA}`
-                    : ""
-            }
-          `}
+          title={`Site Popularity${genderAgeRangeFilteredText}`}
           isClearFilterEnabled={
             filterAgeRange !== null || filterGender !== null
           }
@@ -273,7 +305,19 @@ export default function Insights() {
         </DashboardCard>
         <DashboardCard
           gridColumns={4}
-          title={`Geography${filterCountry !== null ? `: ${(filterCountry as any).valueA}` : ""}`}
+          title={`
+            Geography${
+              (filterCountry as any)?.members &&
+              (filterCountry as any)?.members?.length > 1
+                ? `: Mult. countries`
+                : (filterCountry as any)?.members &&
+                    (filterCountry as any)?.members?.length > 0
+                  ? `: ${(filterCountry as any).members?.[0]}`
+                  : filterCountry !== null && (filterCountry as any)?.valueA
+                    ? `: ${(filterCountry as any).valueA}`
+                    : ""
+            } 
+          `}
           isClearFilterEnabled={filterCountry !== null}
           clearFilter={() => setFilterCountry(null)}
         >
@@ -286,18 +330,7 @@ export default function Insights() {
         </DashboardCard>
         <DashboardCard
           gridColumns={8}
-          title={`
-            Buyer Analysis${filterAgeRange !== null || filterGender !== null ? ": " : ""}
-            ${
-              filterGender !== null && filterAgeRange !== null
-                ? `${(filterGender as any)?.valueA}, ${(filterAgeRange as any)?.valueA}`
-                : filterGender !== null
-                  ? `${(filterGender as any)?.valueA}`
-                  : filterAgeRange !== null
-                    ? `${(filterAgeRange as any)?.valueA}`
-                    : ""
-            }
-          `}
+          title={`Buyer Analysis${genderAgeRangeFilteredText}`}
           isClearFilterEnabled={
             filterAgeRange !== null || filterGender !== null
           }
@@ -317,18 +350,7 @@ export default function Insights() {
         </DashboardCard>
         <DashboardCard
           gridColumns={4}
-          title={`
-            Demographics${filterAgeRange !== null || filterGender !== null ? ": " : ""}
-            ${
-              filterGender !== null && filterAgeRange !== null
-                ? `${(filterGender as any)?.valueA}, ${(filterAgeRange as any)?.valueA}`
-                : filterGender !== null
-                  ? `${(filterGender as any)?.valueA}`
-                  : filterAgeRange !== null
-                    ? `${(filterAgeRange as any)?.valueA}`
-                    : ""
-            }
-          `}
+          title={`Demographics${genderAgeRangeFilteredText}`}
           isClearFilterEnabled={
             filterAgeRange !== null || filterGender !== null
           }

@@ -31,7 +31,7 @@ export default function DashboardCard({
         }
       >
         {title ? (
-          <div className="min-h-[40px] flex flex-col md:flex-row md:items-center justify-start md:justify-between mb-3">
+          <div className="min-h-[40px] flex flex-col md:flex-row md:items-start justify-start md:justify-between mb-3">
             <h1 className="text-lg">{title}</h1>
             {isClearFilterEnabled && clearFilter ? (
               <FilterButton onClick={clearFilter}>Clear selection</FilterButton>
