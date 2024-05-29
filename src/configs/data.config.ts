@@ -1,3 +1,7 @@
+// data.config.ts:
+// Used for manipulating the data from data.ts
+// to display appropriately to Sisense charts
+
 const cols = [
   "saleId",
   "date",

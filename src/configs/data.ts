@@ -1,3 +1,7 @@
+// data.ts:
+// Sample data set that doesn't go through Sisense ElastiCube
+// Inspiration: https://csdk-react.sisense.com/charts
+
 export const items = {
   data: {
     columns: [

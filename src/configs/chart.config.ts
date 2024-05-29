@@ -14,10 +14,12 @@ export type OvertimeChartProps = ChartProps & {
 }
 
 type NumberFormatConfigs = {
-  [key: string]: NumberFormatConfig
+  [key: string]: NumberFormatConfig // type from @sisense/sdk-ui
 }
 
+// Storing different number format configs
 export const numberFormatConfigs: NumberFormatConfigs = {
+  // no number abbreviations, $ sign, 2 decimal places
   currency: {
     name: "Currency",
     decimalScale: 2,
@@ -29,6 +31,7 @@ export const numberFormatConfigs: NumberFormatConfigs = {
     prefix: true,
     symbol: "$",
   },
+  // full number abbreviations, $ sign, 2 decimal places
   currency_2: {
     name: "Currency",
     decimalScale: 2,
@@ -40,6 +43,7 @@ export const numberFormatConfigs: NumberFormatConfigs = {
     prefix: true,
     symbol: "$",
   },
+  // no number abbreviations, 0 decimal places
   unit: {
     decimalScale: 0,
     trillion: false,
