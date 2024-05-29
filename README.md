@@ -17,38 +17,24 @@ _Made by Nhat K. Nguyen @ resolve Computing Services Co Ltd_
 
 ## Introduction
 
-`Compose SDK` is a software development kit that enables a composable, code-driven way to use Sisense platform capabilities. The SDK consists of packages such as: **sdk-ui**, **sdk-cli**, **sdk-data**, etc.
+This repository is made as a submission to the [Sisense Compose SDK Hackathon](https://www.sisense.com/platform/compose-sdk/hackathon/).
 
-Sisense tends to use **both iFrame and Compose SDK** in their POC apps in order to showcase fully the capabilities of their tools. As of early 2024, Sisense incentivizes to use **Compose SDK** for its developer-first approach and high level of customization. Sisense also focuses on this as the _top priority_ amongst all other methods.
+`Compose SDK` is a software development kit from Sisense that enables a composable, code-driven way to use Sisense platform capabilities. The SDK consists of packages such as: **sdk-ui**, **sdk-cli**, **sdk-data**, etc.
 
-Click [here](https://sisense.dev/guides/sdk/) to visit its official documentation.
-
-## Pros. and Cons.
-
-### Pros.
-
-- Most dynamic and customizable amongst all Sisense infuse methods.
-- Developer-friendly, espcially to ones familiar with modern frameworks such as **React**, **Angular** and **Vue**.
-- Can render dashboard widgets separately.
-- Sisense top priority, so that all new analytics & AI features forward will be available in Compose SDK first.
-
-### Cons.
-
-- A developer-first approach; hence, it requires certain coding knowledge of **JavaScript** as well as at least one of the modern JavaScript frameworks eg. **React**, **Angular** or **Vue**.
-- Does not acquire Sisense dashboard's AI features and plugins directly; hence, it tends to be paired up with `iFrame` so that both methods can compliment each other.
+Click [here](https://sisense.dev/guides/sdk/) to visit the official documentation.
 
 ## Use Case
 
-While Sisense compose SDK supports **React**, **Angular** and **Vue**, the examples here only cover the **ReactJS** side of things.
+The app is named **CompetiSense** _(get it?)_ - it has the feature to show overviews and insights of different workspaces using Sisense Compose SDK charts with some touch to different types of filters and style customization.
 
-It contains of 2 parts, each part represents a method to fetch dataset to use in the compose SDK:
+There are 2 available workspaces that you can toggle in the app: (1) eCommerce and (2) Custom Retail.
 
-- Using 'Sample ECommerce' _(dataset that stores in Sisense environment)_: **[Recap](../../src/routes/ComposeSDK/Recap/index.tsx)** and **[Insights](../../src/routes/ComposeSDK/Insights/index.tsx)**.
+- **eCommerce**: Using 'Sample ECommerce' _(dataset that stores in Sisense environment)_: **[Recap](/src/routes/Recap/index.tsx)** and **[Insights](/src/routes/Insights/index.tsx)**.
 
   - **Pros:** intended way to use compose SDK, has powerful tools (eg. **measureFatory**, **filterFactory**, etc.) to perform powerful data analytics while the dataset is handled in the Sisense environment.
   - **Cons:** the filter tools though powerful in certain cases, aren't fully covered; the filter tile components _(eg. MemberFilterTile, DateRangeFilterTile, etc.)_ need extra effort to style & customize compared to things like charts.
 
-- Using custom data _(dataset that doesn't go through Sisense environment)_: **[Overview](../../src/routes/ComposeSDK/Overview/index.tsx)**, **[Retail](../../src/routes/ComposeSDK/Retail/index.tsx)** and **[Employees](../../src/routes/ComposeSDK/Employees/index.tsx)**.
+- **Custom Retail**: Using custom data _(dataset that doesn't go through Sisense environment)_: **[Overview](/src/routes/Overview/index.tsx)**, **[Retail](/src/routes/Retail/index.tsx)** and **[Employees](/src/routes/Employees/index.tsx)**.
   - **Pros:** have the freedom to manipulate data at your own will _(though it still needs to follow certain format in order to be used in compose SDK charts)_.
   - **Cons:** can only utilize charts from **sdk-ui**; since the data doesn't go through Sisense environment, it can't use anything from **powerful date format**, **measureFatory**, **filterFactory** to **MemberFilterTile**, **DateRangeFilterTile**, etc.
 
@@ -64,6 +50,7 @@ $ pnpm run dev # or yarn run dev, npm run dev, bun run dev, etc.
 
 ## Learn More
 
+- [Sisense Compose SDK Official Documentation](https://sisense.dev/guides/sdk/)
 - [Sisense Compose SDK React Demo](https://github.com/sisense/compose-sdk-react-demo)
 - [Sisense Compose SDK React Demo GitHub](https://github.com/sisense/compose-sdk-react-demo)
 - [Sisense Compose SDK Playground](https://www.sisense.com/platform/compose-sdk/playground/)
