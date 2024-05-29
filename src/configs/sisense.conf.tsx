@@ -10,6 +10,9 @@ const SisenseContextProviderArgs = () => {
   const baseOptions = {
     url: import.meta.env.VITE_APP_SISENSE_URL,
     defaultDataSource: "Sample ECommerce",
+    appConfig: {
+      queryCacheConfig: { enabled: true },
+    },
   }
   const wat = import.meta.env.VITE_APP_SISENSE_WAT
   const token = import.meta.env.VITE_APP_SISENSE_API_TOKEN
@@ -29,7 +32,7 @@ const SisenseContextProviderArgs = () => {
 const SisenseThemeProviderArgs = (isDarkTheme: boolean, palette: string[]) => ({
   theme: {
     chart: {
-      backgroundColor: "#00000000",
+      backgroundColor: "transparent",
       textColor: isDarkTheme ? "#ffffff" : "#1e293b",
     },
     palette: {

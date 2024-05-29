@@ -12,10 +12,10 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(react@18.3.1)
       '@sisense/sdk-data':
-        specifier: ^1.10.0
+        specifier: ^1.10.1
         version: 1.10.1
       '@sisense/sdk-ui':
-        specifier: ^1.10.0
+        specifier: ^1.10.1
         version: 1.10.1(@types/react@18.3.3)(highcharts@10.3.3)(i18next@23.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.4.5)
       axios:
         specifier: ^1.6.8
@@ -40,7 +40,7 @@ importers:
         specifier: ^5.15.16
         version: 5.15.18(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@sisense/sdk-cli':
-        specifier: ^1.10.0
+        specifier: ^1.10.1
         version: 1.10.1(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react@18.3.1))(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/react':
         specifier: ^15.0.7

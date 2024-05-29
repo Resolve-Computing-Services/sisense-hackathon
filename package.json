@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@react-hook/window-size": "^3.1.1",
-    "@sisense/sdk-data": "^1.10.0",
-    "@sisense/sdk-ui": "^1.10.0",
+    "@sisense/sdk-data": "^1.10.1",
+    "@sisense/sdk-ui": "^1.10.1",
     "axios": "^1.6.8",
     "html-to-image": "^1.11.11",
     "react": "^18.2.0",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@mui/material": "^5.15.16",
-    "@sisense/sdk-cli": "^1.10.0",
+    "@sisense/sdk-cli": "^1.10.1",
     "@testing-library/react": "^15.0.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
